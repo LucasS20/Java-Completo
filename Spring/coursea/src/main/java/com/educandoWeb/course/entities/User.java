@@ -1,7 +1,6 @@
 package com.educandoWeb.course.entities;
 
 import jakarta.persistence.*;
-import org.springframework.context.annotation.Primary;
 
 import java.io.Serializable;
 import java.util.Objects;

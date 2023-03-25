@@ -2,7 +2,6 @@ package com.educandoWeb.course.config;
 
 import com.educandoWeb.course.entities.User;
 import com.educandoWeb.course.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -13,10 +12,10 @@ import java.util.Arrays;
 
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
-    @Autowired
-    private UserRepository userRepository;
-
-
+    private final UserRepository userRepository;
+    public TestConfig(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
     @Override
     public void run(String... args) {
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
