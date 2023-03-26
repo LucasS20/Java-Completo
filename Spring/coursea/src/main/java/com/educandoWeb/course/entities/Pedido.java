@@ -1,17 +1,19 @@
 package com.educandoWeb.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
+
 @Entity
 public class Pedido implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T' HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
-
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private User cliente;
