@@ -1,5 +1,6 @@
 package com.educandoWeb.course.entities;
 
+import com.educandoWeb.course.entities.enums.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
@@ -14,13 +15,15 @@ public class Pedido implements Serializable {
     private Long id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T' HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
+    private Integer statusPedido;
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private User cliente;
 
-    public Pedido(Long id, Instant moment, User cliente) {
+    public Pedido(Long id, Instant moment, StatusPedido statusPedido, User cliente) {
         this.id = id;
         this.moment = moment;
+        setStatusPedido(statusPedido);
         this.cliente = cliente;
     }
 
@@ -45,6 +48,15 @@ public class Pedido implements Serializable {
 
     public User getCliente() {
         return cliente;
+    }
+
+    public StatusPedido getStatusPedido() {
+        return StatusPedido.valueOf(statusPedido);
+    }
+
+    public void setStatusPedido(StatusPedido statusPedido) {
+        if (statusPedido != null)
+            this.statusPedido = statusPedido.getCodigo();
     }
 
     public void setCliente(User cliente) {
