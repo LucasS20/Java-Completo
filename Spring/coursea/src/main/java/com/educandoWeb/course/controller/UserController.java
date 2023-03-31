@@ -1,7 +1,7 @@
-package com.educandoWeb.course.resources;
+package com.educandoWeb.course.controller;
 
-import com.educandoWeb.course.entities.Pedido;
-import com.educandoWeb.course.services.PedidoService;
+import com.educandoWeb.course.entities.User;
+import com.educandoWeb.course.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/pedidos")
-public class PedidoResource {
-    private final PedidoService service;
+@RequestMapping(value = "/users")
+public class UserController {
+    private final UserService service;
 
-    public PedidoResource(PedidoService service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
     @GetMapping
-    public ResponseEntity<List<Pedido>> findAll() {
-        List<Pedido> listaUsuarios = service.findAll();
+    public ResponseEntity<List<User>> findAll() {
+        List<User> listaUsuarios = service.findAll();
         return ResponseEntity.ok().body(listaUsuarios);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Pedido> findById(@PathVariable Long id) {
+    public ResponseEntity<User> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 }
