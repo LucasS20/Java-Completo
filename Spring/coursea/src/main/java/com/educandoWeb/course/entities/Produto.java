@@ -4,37 +4,30 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "tb_produto")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Categoria implements Serializable {
+public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String nome;
+    @Column
+    private String descricao;
+    @Column
+    private Double preco;
+    @Column
+    private String url;
     @Transient
-    private Set<Produto> produtoSet = new HashSet<>();
-
-    public Categoria(Long id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
+    private final Set<Categoria> categorias = new HashSet<>();
 
 }
