@@ -27,7 +27,10 @@ public class Produto {
     private Double preco;
     @Column
     private String url;
-    @Transient
+    @ManyToMany
+    @JoinTable(name = "tb_product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private final Set<Categoria> categorias = new HashSet<>();
 
 }
