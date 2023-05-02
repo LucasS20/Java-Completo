@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Setter
 @EqualsAndHashCode
 @Embeddable
-public class ItemPedido implements Serializable {
+public class ItemPedidoPK implements Serializable {
     private static final Long serialVersionUID = 1L;
     @ManyToOne
     @JoinColumn(name = "pedido_id")

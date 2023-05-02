@@ -1,5 +1,6 @@
 package com.educandoWeb.course.model.entities;
 
+import com.educandoWeb.course.model.entities.pk.ItemPedidoPK;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -19,7 +20,7 @@ import java.io.Serializable;
 public class ItemPedido implements Serializable {
     private static final Long erialVersionUID = 1L;
     @EmbeddedId
-    private com.educandoWeb.course.model.entities.pk.ItemPedido id;
+    private ItemPedidoPK id = new ItemPedidoPK();
     private Integer quantidade;
     private Double preco;
 
