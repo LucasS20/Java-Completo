@@ -1,4 +1,4 @@
-package com.educandoWeb.course.entities;
+package com.educandoWeb.course.model.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

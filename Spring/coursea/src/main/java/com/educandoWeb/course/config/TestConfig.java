@@ -1,14 +1,14 @@
 package com.educandoWeb.course.config;
 
-import com.educandoWeb.course.entities.Categoria;
-import com.educandoWeb.course.entities.Pedido;
-import com.educandoWeb.course.entities.Produto;
-import com.educandoWeb.course.entities.User;
-import com.educandoWeb.course.entities.enums.StatusPedido;
-import com.educandoWeb.course.repositories.CategoriaRepository;
-import com.educandoWeb.course.repositories.PedidoRepository;
-import com.educandoWeb.course.repositories.ProdutoRepository;
-import com.educandoWeb.course.repositories.UserRepository;
+import com.educandoWeb.course.model.entities.Categoria;
+import com.educandoWeb.course.model.entities.Pedido;
+import com.educandoWeb.course.model.entities.Produto;
+import com.educandoWeb.course.model.entities.User;
+import com.educandoWeb.course.model.entities.enums.StatusPedido;
+import com.educandoWeb.course.model.repositories.CategoriaRepository;
+import com.educandoWeb.course.model.repositories.PedidoRepository;
+import com.educandoWeb.course.model.repositories.ProdutoRepository;
+import com.educandoWeb.course.model.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

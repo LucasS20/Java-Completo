@@ -1,7 +1,7 @@
 package com.educandoWeb.course.controller;
 
-import com.educandoWeb.course.entities.Categoria;
-import com.educandoWeb.course.services.CategoriaService;
+import com.educandoWeb.course.model.entities.Categoria;
+import com.educandoWeb.course.model.services.CategoriaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

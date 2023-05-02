@@ -1,7 +1,7 @@
-package com.educandoWeb.course.services;
+package com.educandoWeb.course.model.services;
 
-import com.educandoWeb.course.entities.User;
-import com.educandoWeb.course.repositories.UserRepository;
+import com.educandoWeb.course.model.entities.User;
+import com.educandoWeb.course.model.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

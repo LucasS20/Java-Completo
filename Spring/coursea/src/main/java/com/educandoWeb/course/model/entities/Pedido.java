@@ -1,6 +1,6 @@
-package com.educandoWeb.course.entities;
+package com.educandoWeb.course.model.entities;
 
-import com.educandoWeb.course.entities.enums.StatusPedido;
+import com.educandoWeb.course.model.entities.enums.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 

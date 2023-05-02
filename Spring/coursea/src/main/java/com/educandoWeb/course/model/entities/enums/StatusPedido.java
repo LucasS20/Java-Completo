@@ -1,6 +1,4 @@
-package com.educandoWeb.course.entities.enums;
-
-import java.util.Arrays;
+package com.educandoWeb.course.model.entities.enums;
 
 public enum StatusPedido {
     ESPERANDO_PAGAMENTO(1),

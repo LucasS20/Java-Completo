@@ -1,7 +1,7 @@
 package com.educandoWeb.course.controller;
 
-import com.educandoWeb.course.entities.Pedido;
-import com.educandoWeb.course.services.PedidoService;
+import com.educandoWeb.course.model.entities.Pedido;
+import com.educandoWeb.course.model.services.PedidoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
