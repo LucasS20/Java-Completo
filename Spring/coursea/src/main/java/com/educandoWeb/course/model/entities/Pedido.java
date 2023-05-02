@@ -3,15 +3,24 @@ package com.educandoWeb.course.model.entities;
 import com.educandoWeb.course.model.entities.enums.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@Getter
+@Setter
+@Table
+
 public class Pedido implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T' HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
@@ -20,35 +29,15 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "cliente_id")
     private User cliente;
 
-    public Pedido(Long id, Instant moment, StatusPedido statusPedido, User cliente) {
-        this.id = id;
+    @OneToMany(mappedBy = "id.pedido")
+    private final Set<ItemPedido> itens = new HashSet<>();
+
+    public Pedido(Instant moment, StatusPedido statusPedido, User cliente) {
         this.moment = moment;
         setStatusPedido(statusPedido);
         this.cliente = cliente;
     }
 
-    public Pedido() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Instant getMoment() {
-        return moment;
-    }
-
-    public void setMoment(Instant moment) {
-        this.moment = moment;
-    }
-
-    public User getCliente() {
-        return cliente;
-    }
 
     public StatusPedido getStatusPedido() {
         return StatusPedido.valueOf(statusPedido);
@@ -59,20 +48,4 @@ public class Pedido implements Serializable {
             this.statusPedido = statusPedido.getCodigo();
     }
 
-    public void setCliente(User cliente) {
-        this.cliente = cliente;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pedido pedido = (Pedido) o;
-        return Objects.equals(id, pedido.id) && Objects.equals(moment, pedido.moment) && Objects.equals(cliente, pedido.cliente);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, moment, cliente);
-    }
 }

@@ -1,6 +1,5 @@
 package com.educandoWeb.course.model.entities;
 
-import com.educandoWeb.course.model.entities.pk.ItemPedido;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 @Getter
@@ -18,14 +16,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_pedido_produto")
-public class PedidoProduto implements Serializable {
+public class ItemPedido implements Serializable {
     private static final Long erialVersionUID = 1L;
     @EmbeddedId
-    private ItemPedido id;
+    private com.educandoWeb.course.model.entities.pk.ItemPedido id;
     private Integer quantidade;
     private Double preco;
 
-    public PedidoProduto(Pedido pedido, Produto produto, Integer quantidade, Double preco) {
+    public ItemPedido(Pedido pedido, Produto produto, Integer quantidade, Double preco) {
         id.setPedido(pedido);
         id.setProduto(produto);
         this.quantidade = quantidade;
