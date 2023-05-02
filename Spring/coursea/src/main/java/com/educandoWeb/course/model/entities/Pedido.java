@@ -2,6 +2,7 @@ package com.educandoWeb.course.model.entities;
 
 import com.educandoWeb.course.model.entities.enums.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,6 @@ public class Pedido implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private User cliente;
-
     @OneToMany(mappedBy = "id.pedido")
     private final Set<ItemPedido> itens = new HashSet<>();
 
