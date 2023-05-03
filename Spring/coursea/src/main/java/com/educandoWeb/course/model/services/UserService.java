@@ -9,18 +9,22 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private final UserRepository repo;
+    private final UserRepository userRepository;
 
-    public UserService(UserRepository repo) {
-        this.repo = repo;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public List<User> findAll() {
-        return repo.findAll();
+        return userRepository.findAll();
     }
 
     public User findById(Long id) {
-        Optional<User> obj = repo.findById(id);
+        Optional<User> obj = userRepository.findById(id);
         return obj.get();
     }
+    public User insert(User user){
+        return userRepository.save(user);
+    }
+
 }
