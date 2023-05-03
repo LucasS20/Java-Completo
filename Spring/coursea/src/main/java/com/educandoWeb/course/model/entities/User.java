@@ -2,13 +2,14 @@ package com.educandoWeb.course.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+@EqualsAndHashCode
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable {
@@ -23,7 +24,7 @@ public class User implements Serializable {
     private String password;
     @JsonIgnore
     @OneToMany(mappedBy = "cliente")
-    private List<Pedido> listPedidos = new ArrayList<>();
+    private final List<Pedido> listPedidos = new ArrayList<>();
 
     //#region Construtores
     public User(Long id, String name, String email, String phone, String password) {
@@ -84,16 +85,4 @@ public class User implements Serializable {
     }
     //#endregion
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

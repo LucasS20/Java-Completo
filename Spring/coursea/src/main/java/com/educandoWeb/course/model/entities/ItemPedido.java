@@ -7,8 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
 
-import java.io.Serializable;
-
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -17,7 +15,7 @@ import java.io.Serializable;
 @Table(name = "tb_pedido_produto")
 public class ItemPedido {
     @EmbeddedId
-@Getter(AccessLevel.NONE)
+    @Getter(AccessLevel.NONE)
     private ItemPedidoPK id = new ItemPedidoPK();
     private Integer quantidade;
     private Double preco;

@@ -30,7 +30,7 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "cliente_id")
     private User cliente;
     @OneToMany(mappedBy = "id.pedido")
-    private final Set<ItemPedido> itens = new HashSet<>();
+    private final Set<ItemPedido> itensDoPedido = new HashSet<>();
 
     public Pedido(Instant moment, StatusPedido statusPedido, User cliente) {
         this.moment = moment;
