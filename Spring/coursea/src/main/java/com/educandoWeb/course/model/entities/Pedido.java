@@ -2,7 +2,6 @@ package com.educandoWeb.course.model.entities;
 
 import com.educandoWeb.course.model.entities.enums.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,14 +22,21 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T' HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
+
     private Integer statusPedido;
+
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private User cliente;
+
     @OneToMany(mappedBy = "id.pedido")
     private final Set<ItemPedido> itensDoPedido = new HashSet<>();
+//cascade é pro pedido e o pagamento tiver o mesmo id
+    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private Pagamento pagamento;
 
     public Pedido(Instant moment, StatusPedido statusPedido, User cliente) {
         this.moment = moment;
