@@ -1,5 +1,6 @@
 package com.educandoWeb.course.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,5 +20,6 @@ public class Pagamento {
     private Instant Moment;
     @OneToOne
     @MapsId
+    @JsonIgnore
     private Pedido pedido;
 }

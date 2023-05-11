@@ -45,5 +45,9 @@ public class ItemPedido {
         id.setProduto(produto);
     }
 
+    public Double getSubTotal() {
+        return preco * quantidade;
+    }
+
     //#endregion
 }

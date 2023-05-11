@@ -34,7 +34,8 @@ public class Pedido implements Serializable {
 
     @OneToMany(mappedBy = "id.pedido")
     private final Set<ItemPedido> itensDoPedido = new HashSet<>();
-//cascade é pro pedido e o pagamento tiver o mesmo id
+
+    //cascade é pro pedido e o pagamento tiver o mesmo id
     @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
     private Pagamento pagamento;
 
@@ -47,6 +48,10 @@ public class Pedido implements Serializable {
 
     public StatusPedido getStatusPedido() {
         return StatusPedido.valueOf(statusPedido);
+    }
+
+    public Double getTotal() {
+        return itensDoPedido.stream().mapToDouble(ItemPedido::getSubTotal).sum();
     }
 
     public void setStatusPedido(StatusPedido statusPedido) {
