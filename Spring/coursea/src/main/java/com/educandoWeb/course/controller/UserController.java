@@ -33,9 +33,7 @@ public class UserController {
     public ResponseEntity<User> inserir(@RequestBody User user) {
         user = service.insert(user);
 
-        URI uri = ServletUriComponentsBuilder
-                .fromCurrentRequest().path("{id}")
-                .buildAndExpand(user.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(user.getId()).toUri();
 
         return ResponseEntity.created(uri).body(user);//retorna 201
     }
